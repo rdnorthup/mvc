@@ -1,0 +1,69 @@
+div.title {
+    font-weight: bold;
+}
+
+div.calcRow div.buttonPressed,
+div.calcRow div.numberButton,
+div.calcRow div.operatorButton {
+    padding: 10px;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    border: 1px solid black;
+    display: inline;
+    position: relative;
+    float: left;
+    clear: right;
+    margin: 3px;
+    background-color: white;
+}
+
+div.calcRow div.buttonPressed {
+    background-color: grey;
+}
+
+div.calcRow div.numberButton:hover,
+div.calcRow div.operatorButton:hover {
+    background-color: grey;
+    color: white;
+    border: 1px inset #999;
+}
+
+div.calculatorContainer {
+    width: 600px;
+    height: 620px;
+    text-align: center;
+    clear: both;
+    float: left;
+    display: block;
+}
+
+div.calculatorContainer div.calculatorWrapper {
+    width: 215px;
+    margin-left: 125px;
+    border: 1px solid black;
+    display: block;
+    position: relative;
+    clear: both;
+    float: left;
+    padding: 30px;
+    background-color: #ccc;
+}
+
+div.calculatorContainer div.calculatorWrapper div.calcRow {
+    margin-top: 1em;
+    float: left;
+    clear: both;
+    margin-left: 0;
+    border: none;
+}
+
+div.calculatorContainer div.calculatorWrapper div.calcRow input.tally {
+    width: 210px;
+    height: 35px;
+    font-size: 20px;
+    float: left;
+    text-align: right;
+    padding: 2px;
+    color: #777;
+}
