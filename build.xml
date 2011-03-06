@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+
+<project name="Test Job" default="build">
+
+	<target name="build" depends="clean, prepare, phpcs, phpdoc, pdepend, phpunit">
+	</target>
+	
+	<!-- Erase all previous work in the output directory. -->
+	<target name="clean">
+		<delete dir="target"/>
+	</target>
+	
+	<!-- Build the output directories -->
+	<target name="prepare">
+		<mkdir dir="target/docs"/>
+		<mkdir dir="target/test-results"/>
+	</target>
+	
+	<!-- Run PHPDocumentor and stage the results in a docs directory. -->
+	<target name="phpdoc">
+		<exec dir="." executable="phpdoc" failonerror="true">
+			<arg line="-t target/docs --directory . -ti 'Test Job Docs' --parseprivate on --undocumentedelements on --output HTML:Smarty:PHP"/>
+		</exec>
+	</target>
+
+	<!-- Run PHP Codesniffer on the entire codebase and generate a checkstyle formatted report. -->	
+	<target name="phpcs">
+		<exec dir="." executable="phpcs" failonerror="false" output="target/docs/checkstyle.xml">
+			<arg line="--report=checkstyle ."/>
+		</exec>
+	</target>
+	
+	<!-- Run PDepend on the source tree and generate an jDepend-formatted representation of the projects' library dependencies. -->
+	<target name="pdepend">
+		<exec dir="." executable="pdepend" failonerror="true">
+			<arg line="--jdepend-xml=target/docs/jdepend.xml ."/>
+		</exec>
+	</target>
+	
+	<!-- Execute PHP Unit on all unit tests under the test directory.  Generate a jUnit-formatted test results report and -->
+	<!-- a Clover-formatted code coverage report.                                                                         -->
+	<target name="phpunit">
+		<exec dir="." executable="phpunit" failonerror="true">
+			<arg line="--log-junit target/test-results/junit.xml --coverage-clover target/docs/clover.xml test"/>
+		</exec>
+	</target>
+	
+	<!-- This target only ever executed when called out by name.  Deploys to MAMP. -->
+	<target name="deploy">
+		<copy todir="/Applications/MAMP/htdocs/deploytest">
+			<fileset dir="." excludes="target"/>
+		</copy>
+	</target>
+
+	
+</project>
+
