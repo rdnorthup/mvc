@@ -7,25 +7,29 @@
 	
 	<!-- Erase all previous work in the output directory. -->
 	<target name="clean">
-		<delete dir="target"/>
+		<delete dir="docs"/>
 	</target>
 	
 	<!-- Build the output directories -->
 	<target name="prepare">
-		<mkdir dir="target/docs"/>
-		<mkdir dir="target/test-results"/>
+		<mkdir dir="docs"/>
+        <mkdir dir="docs/javadoc"/>
+        <mkdir dir="docs/code-coverage"/>
+        <mkdir dir="docs/code-style"/>
+        <mkdir dir="docs/dependencies"/>
+		<mkdir dir="docs/test-results"/>
 	</target>
 	
 	<!-- Run PHPDocumentor and stage the results in a docs directory. -->
 	<target name="phpdoc">
 		<exec dir="." executable="phpdoc" failonerror="true">
-			<arg line="-q -i *Test.php -t target/docs --directory . -ti 'MVC Docs' --parseprivate on --undocumentedelements on --output HTML:Smarty:PHP"/>
+			<arg line="-q -i *Test.php -t docs/javadoc --directory . -ti 'MVC Docs' --parseprivate on --undocumentedelements on --output HTML:Smarty:PHP"/>
 		</exec>
 	</target>
 
 	<!-- Run PHP Codesniffer on the entire codebase and generate a checkstyle formatted report. -->	
 	<target name="phpcs">
-		<exec dir="." executable="phpcs" failonerror="false" output="target/docs/checkstyle.xml">
+		<exec dir="." executable="phpcs" failonerror="false" output="docs/code-style/checkstyle.xml">
 			<arg line="--report=checkstyle ."/>
 		</exec>
 	</target>
@@ -33,7 +37,7 @@
 	<!-- Run PDepend on the source tree and generate an jDepend-formatted representation of the projects' library dependencies. -->
 	<target name="pdepend">
 		<exec dir="." executable="pdepend" failonerror="true">
-			<arg line="--jdepend-xml=target/docs/jdepend.xml ."/>
+			<arg line="--jdepend-xml=docs/dependencies/jdepend.xml ."/>
 		</exec>
 	</target>
 	
@@ -41,7 +45,7 @@
 	<!-- a Clover-formatted code coverage report.                                                                         -->
 	<target name="phpunit">
 		<exec dir="." executable="phpunit" failonerror="true">
-			<arg line="--log-junit target/test-results/junit.xml --coverage-clover target/docs/clover.xml tests"/>
+			<arg line="--log-junit docs/test-results/junit.xml --coverage-clover docs/code-coverage/clover.xml --coverage-html docs/code-coverage/ tests"/>
 		</exec>
 	</target>
 	
