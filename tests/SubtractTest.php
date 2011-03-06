@@ -1,6 +1,6 @@
 <?php
 
-    require_once( '../includes/Math.class.php');
+    require_once( 'includes/Math.class.php');
     
     class SubtractTest extends PHPUnit_Framework_TestCase
     {
@@ -24,8 +24,8 @@
 
             $answer = $this->objMath->calculate();
 
-            assertEqual($answer, 5);
-            
+            $this->assertEquals($answer, 5);
+
         }
     }
 

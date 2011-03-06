@@ -1,6 +1,6 @@
 <?php
 
-    require_once( '../includes/Math.class.php');
+    require_once( 'includes/Math.class.php');
     class ModulusTest extends PHPUnit_Framework_TestCase
     {
         protected $objMath;
@@ -24,7 +24,7 @@
 
             $answer = $this->objMath->calculate();
 
-            assertEqual($answer, 1);
+            $this->assertEquals($answer, 1);
         }
     }
 

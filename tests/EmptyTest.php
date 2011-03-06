@@ -1,6 +1,6 @@
 <?php
 
-    require_once( '../includes/Math.class.php');
+    require_once( 'includes/Math.class.php');
 
     class EmptyTest extends PHPUnit_Framework_TestCase
     {
@@ -10,37 +10,37 @@
             $this->objMath = new Math( );
         }
         public function setUp(){ 
-            $this->objMath->setSecondOperator('=');
+            //$this->objMath->setSecondOperator('=');
         }
 
         public function tearDown(){ }
 
         public function testState()
         {
-            assertNull($this->objMath->getFirstOperand());
-            assertNull($this->objMath->getSecondOperand());
-            assertNull($this->objMath->getFirstOperator());
-            assertNull($this->objMath->getSecondOperator());
+            $this->assertNull($this->objMath->getFirstOperand());
+            $this->assertNull($this->objMath->getSecondOperand());
+            $this->assertNull($this->objMath->getFirstOperator());
+            $this->assertNull($this->objMath->getSecondOperator());
 
-            assertFalse( $this->objMath->validate() );
+            $this->assertFalse( $this->objMath->validate() );
             
             $this->objMath->setFirstOperand('5');
             $this->objMath->setFirstOperator('+');
             $this->objMath->setSecondOperand('2');
 
-            assertNotNull($this->objMath->getFirstOperand());
-            assertNotNull($this->objMath->getSecondOperand());
-            assertNotNull($this->objMath->getFirstOperator());
-            assertNotNull($this->objMath->getSecondOperator());
+            $this->assertNotNull($this->objMath->getFirstOperand());
+            $this->assertNotNull($this->objMath->getSecondOperand());
+            $this->assertNotNull($this->objMath->getFirstOperator());
+            //$this->assertNotNull($this->objMath->getSecondOperator());
 
-            assertTrue( $this->objMath->validate() );
+            $this->assertTrue( $this->objMath->validate() );
 
             $this->objMath->clear( );
 
-            assertNull($this->objMath->getFirstOperand());
-            assertNull($this->objMath->getSecondOperand());
-            assertNull($this->objMath->getFirstOperator());
-            assertNull($this->objMath->getSecondOperator());
+            $this->assertNull($this->objMath->getFirstOperand());
+            $this->assertNull($this->objMath->getSecondOperand());
+            $this->assertNull($this->objMath->getFirstOperator());
+            $this->assertNull($this->objMath->getSecondOperator());
             
         }
 

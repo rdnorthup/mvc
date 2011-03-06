@@ -1,6 +1,6 @@
 <?php
 
-    require_once( '../includes/Math.class.php');
+    require_once( 'includes/Math.class.php');
     class ErrorTest extends PHPUnit_Framework_TestCase
     {
         protected $objMath;
@@ -24,7 +24,7 @@
 
             $answer = $this->objMath->calculate();
 
-            assertEqual($answer, 'Error');
+            $this->assertEquals($answer, 'Error');
         }
     }
 

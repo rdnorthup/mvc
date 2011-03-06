@@ -1,6 +1,6 @@
 <?php
 
-    require_once( '../includes/Math.class.php');
+    require_once( 'includes/Math.class.php');
     class MultiplyTest extends PHPUnit_Framework_TestCase
     {
         protected $objMath;
@@ -23,7 +23,7 @@
 
             $answer = $this->objMath->calculate();
 
-            assertEqual($answer, 90);
+            $this->assertEquals($answer, 90);
 
         }
     }

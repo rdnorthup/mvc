@@ -46,7 +46,7 @@ class Math {
     }
 
     protected function subtract( ) {
-        return ($this->getFirstOperand() / $this->getSecondOperand() );
+        return ($this->getFirstOperand() - $this->getSecondOperand() );
     }
 
     protected function multiply( ) {

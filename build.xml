@@ -19,7 +19,7 @@
 	<!-- Run PHPDocumentor and stage the results in a docs directory. -->
 	<target name="phpdoc">
 		<exec dir="." executable="phpdoc" failonerror="true">
-			<arg line="-t target/docs --directory . -ti 'Test Job Docs' --parseprivate on --undocumentedelements on --output HTML:Smarty:PHP"/>
+			<arg line="-q -i *Test.php -t target/docs --directory . -ti 'MVC Docs' --parseprivate on --undocumentedelements on --output HTML:Smarty:PHP"/>
 		</exec>
 	</target>
 
@@ -41,13 +41,13 @@
 	<!-- a Clover-formatted code coverage report.                                                                         -->
 	<target name="phpunit">
 		<exec dir="." executable="phpunit" failonerror="true">
-			<arg line="--log-junit target/test-results/junit.xml --coverage-clover target/docs/clover.xml test"/>
+			<arg line="--log-junit target/test-results/junit.xml --coverage-clover target/docs/clover.xml tests"/>
 		</exec>
 	</target>
 	
 	<!-- This target only ever executed when called out by name.  Deploys to MAMP. -->
 	<target name="deploy">
-		<copy todir="/Applications/MAMP/htdocs/deploytest">
+		<copy todir="/Applications/MAMP/htdocs/mvc">
 			<fileset dir="." excludes="target"/>
 		</copy>
 	</target>
