@@ -1,0 +1,10 @@
+RewriteEngine on
+
+RewriteBase /mvc/
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(images|resources|tests)$        $1/                     [L,R]
+RewriteRule ^(images|resources|tests)/        -                       [L]
+RewriteRule ^(.*)$ index.php?rt=$1 [L,QSA]
