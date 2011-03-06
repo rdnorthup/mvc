@@ -1,11 +1,12 @@
 <?php
 
 /**
+ * This class encapsulates basic math operations such as add, subtract, multiply and divide.
+ * 
  *@package Math
  *@author  Ronnie Northrup ronnie@portlandwebworks.com
  *@copyright 2011
  */
-
 class Math {
     private $firstOperator;
     private $secondOperator;
