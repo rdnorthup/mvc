@@ -52,7 +52,7 @@
 	<!-- This target only ever executed when called out by name.  Deploys to MAMP. -->
 	<target name="deploy">
 		<copy todir="/Applications/MAMP/htdocs/mvc">
-			<fileset dir="." excludes="target"/>
+			<fileset dir="." excludes="docs"/>
 		</copy>
 	</target>
 
