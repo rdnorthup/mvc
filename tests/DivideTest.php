@@ -23,7 +23,7 @@
 
             $answer = $this->objMath->calculate();
 
-            $this->assertEquals($answer, 50);
+            $this->assertEquals($answer, 30);
         }
     }
 
