@@ -42,7 +42,6 @@
             $this->assertNull($this->objMath->getFirstOperator());
             $this->assertNull($this->objMath->getSecondOperator());
 
-            asdfasd fads asdf
         }
 
 
