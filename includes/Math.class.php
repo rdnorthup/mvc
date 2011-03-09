@@ -37,7 +37,7 @@ class Math {
                 break;
             default:
                 return 'Error';
-                break;
+                break;asd asd 
         }
         
     }
